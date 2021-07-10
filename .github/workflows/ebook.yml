@@ -12,7 +12,7 @@ jobs:
       - name: Checkout markdown documents
         uses: actions/checkout@v2
         with:
-          repository: ralfstuckert/vertical-u.wiki
+          repository: ralfstuckert/vertical-ui.wiki
           ref: refs/heads/master
           # GitHub's personal access token with access to `dvag/maven-build-action`
           token: ${{ secrets.GITHUB_TOKEN }}
