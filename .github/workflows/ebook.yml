@@ -31,11 +31,12 @@ jobs:
       - name: create metadata file
         run: |
           echo "---
-          > title:
-          > - type: main
-          >   text: My Book
-          > - type: subtitle
-          >   text: A Sample E-Book" >> metadata.yaml
+          title:
+          - type: main
+            text: My Book
+          - type: subtitle
+            text: A Sample E-Book
+          ---" >> metadata.yaml
           cat metadata.yaml
 
       - uses: docker://pandoc/latex:2.14.0.3
