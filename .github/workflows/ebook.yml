@@ -12,7 +12,7 @@ jobs:
       - name: Checkout markdown documents
         uses: actions/checkout@v2
         with:
-          repository: ralfstuckert/pdfbox-layout.wiki
+          repository: ralfstuckert/vertical-u.wiki
           ref: refs/heads/master
           # GitHub's personal access token with access to `dvag/maven-build-action`
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -33,7 +33,7 @@ jobs:
           echo "---
           title:
           - type: main
-            text: My Book
+            text: Avoid Vertical Limits in Microservice Architectures
           - type: subtitle
             text: A Sample E-Book
           ---" >> metadata.yaml
