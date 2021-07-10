@@ -17,7 +17,7 @@ jobs:
           # GitHub's personal access token with access to `dvag/maven-build-action`
           token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: false
-          path: ./wiki
+          path: .
         env:
           GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
           
@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir output 
           rm -f _Sidebar.md
-          echo "::set-output name=files::$(printf '"%s" ' wiki/*.md)"
+          echo "::set-output name=files::$(printf '"%s" ' *.md)"
 
       - uses: docker://pandoc/latex:2.14.0.3
         with:
