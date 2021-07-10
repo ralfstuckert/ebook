@@ -9,7 +9,7 @@ jobs:
 
     steps:
     
-      - name: Checkout dvag/maven-build-action
+      - name: Checkout markdown documents
         uses: actions/checkout@v2
         with:
           repository: ralfstuckert/pdfbox-layout.wiki
@@ -28,9 +28,18 @@ jobs:
           rm -f _Sidebar.md
           echo "::set-output name=files::$(printf '"%s" ' *.md)"
 
+      - name: create metadata file
+        run: |
+          echo "---
+          > title:
+          > - type: main
+          >   text: My Book
+          > - type: subtitle
+          >   text: A Sample E-Book" >> metadata.yaml
+
       - uses: docker://pandoc/latex:2.14.0.3
         with:
-          args: -t epub3 --toc --title=Sample-EBook --output=output/sample.epub ${{ steps.files_list.outputs.files }}
+          args: -t epub3 --toc --output=output/sample.epub metadata.yaml ${{ steps.files_list.outputs.files }}
           
       - uses: docker://rappdw/ebook-convert
         with:
