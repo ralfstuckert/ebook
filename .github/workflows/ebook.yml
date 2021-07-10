@@ -36,6 +36,7 @@ jobs:
           >   text: My Book
           > - type: subtitle
           >   text: A Sample E-Book" >> metadata.yaml
+          cat metadata.yaml
 
       - uses: docker://pandoc/latex:2.14.0.3
         with:
