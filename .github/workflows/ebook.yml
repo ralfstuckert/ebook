@@ -28,9 +28,9 @@ jobs:
           rm -f _Sidebar.md
           echo "::set-output name=files::$(printf '"%s" ' wiki/*.md)"
 
-      - uses: docker://pandoc/latex:2.9
+      - uses: docker://pandoc/latex:2.14.0.3
         with:
-          args: -t epub2 --toc --output=output/result.epub ${{ steps.files_list.outputs.files }}
+          args: -t epub3 --toc --output=output/result.epub ${{ steps.files_list.outputs.files }}
           
       - uses: actions/upload-artifact@master
         with:
