@@ -25,9 +25,8 @@ jobs:
         id: files_list
         run: |
           mkdir output 
-          cd wiki
           rm -f _Sidebar.md
-          echo "::set-output name=files::$(printf '"%s" ' *.md)"
+          echo "::set-output name=files::$(printf '"%s" ' wiki/*.md)"
 
       - uses: docker://pandoc/latex:2.9
         with:
